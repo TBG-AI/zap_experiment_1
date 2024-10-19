@@ -2,8 +2,9 @@ import teamLogos from '../../utils/teamLogos'
 
 
 export function GameBox({ homeTeam, awayTeam, time }) {
-  const teamLogo = teamLogos["Arsenal"];
-  console.log({teamLogo})
+  const homeTeamLogo = teamLogos[homeTeam];
+  const awayTeamLogo = teamLogos[awayTeam];
+  console.log({homeTeamLogo})
   return (
     <div className="w-[417px] h-[78px] relative">
       <div className="w-[417px] h-[78px] left-0 top-0 absolute bg-black rounded-[10px]" />
@@ -13,20 +14,20 @@ export function GameBox({ homeTeam, awayTeam, time }) {
         </div>
         <div className="w-[126px] h-[42px] left-0 top-[1px] absolute">
           <div className="w-[72px] h-3 left-0 top-[15px] absolute text-white text-lg font-bold font-['Inter'] leading-[34px] tracking-tight">
-            Arsenal
+            {homeTeam}
           </div>
           <img
             className="w-[42px] h-[42px] left-[84px] top-0 absolute rounded-[20px]"
-            src={teamLogo}
+            src={homeTeamLogo}
           />
         </div>
         <div className="w-[134px] h-[42px] left-[254px] top-0 absolute">
           <div className="w-20 h-[11px] left-[54px] top-[16px] absolute text-white text-lg font-bold font-['Inter'] leading-[34px] tracking-tight">
-            Chelsea
+            {awayTeam}
           </div>
           <img
             className="w-[42px] h-[42px] left-0 top-0 absolute"
-            src="https://via.placeholder.com/42x42"
+            src={awayTeamLogo}
           />
         </div>
       </div>
