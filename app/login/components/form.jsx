@@ -1,5 +1,5 @@
 export function Form({ 
-  // action, 
+  action, 
   children }) {
   return (
     <form
