@@ -1,4 +1,4 @@
-import '@/app/ui/global.css';
+import '@/app/global.css';
 import { GeistMono } from 'geist/font/mono';
 
 export default function RootLayout({
