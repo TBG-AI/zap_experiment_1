@@ -46,7 +46,7 @@ const scoreBets = [
 export default function ParleyList({ selectedGame }) {
   return (
     <div>
-      <p className="text-center font-black text-4xl mb-6">Bets</p>
+      <p className="text-center font-black text-4xl mb-6">Bets for {`${selectedGame.homeTeam} vs ${selectedGame.awayTeam}`}</p>
 
       <div className="flex justify-center items-center">
         <div className="w-[80%] py-4">
