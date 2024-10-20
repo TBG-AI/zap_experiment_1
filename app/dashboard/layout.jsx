@@ -2,6 +2,7 @@
 
 import {useState} from "react"
 import GameList from "./components/gameList"
+import ParlayList from "./components/parlayList"
 
 export default function Layout({ children }) {
   const [selectedGame, setSelectedGame] = useState({
@@ -29,6 +30,8 @@ export default function Layout({ children }) {
         <p>Time: {selectedGame?.time || "No time selected"}</p>
       </div>
       </div>
+      <br/>
+      <ParlayList/>
     </div>
   );
 }

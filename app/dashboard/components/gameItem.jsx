@@ -22,7 +22,7 @@ export function GameItem({ homeTeam, awayTeam, time, onGameSelect}) {
       <CardBody className="flex">
         <div className="flex justify-center items-center ">
         <div className = "flex flex-none justify-between items-center w-20">
-        <p className = "text-lg">{homeTeam}</p>
+        <p className = "text-lg text-right">{homeTeam}</p>
         </div>
 
         <div className = "flex flex-none justify-center items-center w-60">
