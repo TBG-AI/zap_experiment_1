@@ -22,8 +22,12 @@ export default function Layout({ children }) {
         <GameList onGameSelect={handleGameSelect} />
       </div>
       <div className="flex-grow p-6 md:overflow-y-auto md:p-12">
-       {children}
-    
+      <div>
+        <h2>Selected Game:</h2>
+        <p>Home Team: {selectedGame?.homeTeam || "No game selected"}</p>
+        <p>Away Team: {selectedGame?.awayTeam || "No game selected"}</p>
+        <p>Time: {selectedGame?.time || "No time selected"}</p>
+      </div>
       </div>
     </div>
   );
