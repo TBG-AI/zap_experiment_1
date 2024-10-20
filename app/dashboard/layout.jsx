@@ -16,7 +16,7 @@ export default function Layout({ children }) {
     setSelectedGame(gameData); // Update the parent's state when a game is selected
   };
 
-  console.log(selectedGame);
+  // console.log(selectedGame);
 
   return (
     <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
@@ -30,12 +30,12 @@ export default function Layout({ children }) {
         <p>Away Team: {selectedGame?.awayTeam || "No game selected"}</p>
         <p>Time: {selectedGame?.time || "No time selected"}</p>
         <p>Date: {selectedGame?.date || "No date selected"}</p>
-
+        <ParlayList/>
       </div>
       </div>
       <br/>
       
-      <ParlayList/>
+      
     </div>
   );
 }
