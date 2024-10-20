@@ -50,7 +50,21 @@ export default function ParleyList({ selectedGame, onBetsChange }) {
   
   const handleAddBet = (bet) => {
     setBets((prevBets) => {
-      const newBets = [...prevBets, bet];
+      let newBets = [...prevBets];
+      if (bet.name.includes('Over/Under')) {
+        newBets = newBets.filter((existingBet) => !existingBet.name.includes('Over/Under'));
+      }
+      newBets.push(bet);
+      if (onBetsChange) {
+        onBetsChange(newBets);
+      }
+      return newBets;
+    });
+  };
+
+  const handleRemoveBet = (index) => {
+    setBets((prevBets) => {
+      const newBets = prevBets.filter((_, i) => i !== index);
       if (onBetsChange) {
         onBetsChange(newBets);
       }
@@ -188,9 +202,10 @@ export default function ParleyList({ selectedGame, onBetsChange }) {
               <p>No bets selected yet.</p>
             ) : (
               <ul>
-                {bets.map((bet, index) => (
-                  <li key={index}>{`${bet.name} - ${bet.type || bet.score}: ${bet.value}`}</li>
-                ))}
+              {bets.map((bet, index) => (
+                <li key={index} className="flex justify-between items-center">{`${bet.name} - ${bet.type || bet.score}: ${bet.value}`}<Button className="bg-red-500 text-white px-2 py-1 ml-4 rounded" onClick={() => handleRemoveBet(index)}>Remove</Button>
+                </li>
+              ))}
               </ul>
             )}
           </div>
