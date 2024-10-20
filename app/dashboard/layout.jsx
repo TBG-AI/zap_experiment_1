@@ -30,7 +30,7 @@ export default function Layout({ children }) {
         <p>Away Team: {selectedGame?.awayTeam || "No game selected"}</p>
         <p>Time: {selectedGame?.time || "No time selected"}</p>
         <p>Date: {selectedGame?.date || "No date selected"}</p>
-        <ParlayList/>
+        <ParlayList selectedGame = {selectedGame}/>
       </div>
       </div>
       <br/>

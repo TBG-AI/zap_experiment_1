@@ -10,8 +10,8 @@ const overUnderBets = [
 ];
 
 const bothTeamToScoreBets = [
-  { name: "Both Team To Score", over: -3500, under: +4000 },
-  { name: "Both Team to Score in the First Half", over: -3500, under: +4000 },
+  { name: "Both Team To Score", yes: -3500, no: +4000 },
+  { name: "Both Team to Score in the First Half", yes: -3500, no: +4000 },
 ];
 
 const whoWinsBets = [
@@ -20,7 +20,7 @@ const whoWinsBets = [
 
 const scoreBets = [
   {
-    name: "Final Correct Score",
+    name: "Final Score",
     scores: [
       { "0-0": +6000 },
       { "0-1": +6000 },
@@ -31,7 +31,7 @@ const scoreBets = [
     ],
   },
   {
-    name: "Half-Time Correct Score",
+    name: "Half-Time Score",
     scores: [
       { "0-0": +6000 },
       { "0-1": +6000 },
@@ -43,84 +43,124 @@ const scoreBets = [
   },
 ];
 
-export default function ParleyList() {
+export default function ParleyList({ selectedGame }) {
   return (
-    <>
-      <p className="text-center font-black text-4xl">Bets</p>
-      <Accordion variant="splitted" className="py-4" allowMultiple>
-        {/* Over/Under Bets */}
-        <AccordionItem key="over-under" title="Over/Under Bets">
-          {overUnderBets.map((bet, index) => (
-            <div key={index} className="mb-4">
-              <p className="font-bold mb-2">{bet.name}</p>
-              <div className="flex space-x-4">
-                <button className="bg-blue-500 text-white px-4 py-2 rounded">
-                  Over: {bet.over}
-                </button>
-                <button className="bg-red-500 text-white px-4 py-2 rounded">
-                  Under: {bet.under}
-                </button>
-              </div>
-            </div>
-          ))}
-        </AccordionItem>
-        
-        {/* Both Team To Score Bets */}
-        <AccordionItem key="both-team" title="Both Teams To Score Bets">
-          {bothTeamToScoreBets.map((bet, index) => (
-            <div key={index} className="mb-4">
-              <p className="font-bold mb-2">{bet.name}</p>
-              <div className="flex space-x-4">
-                <button className="bg-blue-500 text-white px-4 py-2 rounded">
-                  Over: {bet.over}
-                </button>
-                <button className="bg-red-500 text-white px-4 py-2 rounded">
-                  Under: {bet.under}
-                </button>
-              </div>
-            </div>
-          ))}
-        </AccordionItem>
+    <div>
+      <p className="text-center font-black text-4xl mb-6">Bets</p>
 
-        {/* Who Wins Bets */}
-        <AccordionItem key="who-wins" title="Who Wins Bets">
-          {whoWinsBets.map((bet, index) => (
-            <div key={index} className="mb-4">
-              <p className="font-bold mb-2">{bet.name}</p>
-              <div className="flex space-x-4">
-                <button className="bg-blue-500 text-white px-4 py-2 rounded">
-                  Home: {bet.home}
-                </button>
-                <button className="bg-yellow-500 text-black px-4 py-2 rounded">
-                  Tie: {bet.tie}
-                </button>
-                <button className="bg-red-500 text-white px-4 py-2 rounded">
-                  Away: {bet.away}
-                </button>
-              </div>
-            </div>
-          ))}
-        </AccordionItem>
+      <div className="flex justify-center items-center">
+        <div className="w-[80%] py-4">
+          {/* Card for Over/Under Bets */}
+          <div className="mb-6 border p-4 rounded-lg shadow-lg">
+            <h2 className="text-left font-bold text-xl mb-4 ml-4">
+              Over/Under
+            </h2>
+            <Accordion allowMultiple variant="splitted">
+              {overUnderBets.map((bet, index) => (
+                <AccordionItem
+                  key={index}
+                  title={<div className="text-left text-md">{bet.name}</div>}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm">{`${selectedGame.homeTeam} vs ${selectedGame.awayTeam}`}</span>
+                    <div className="flex space-x-4">
+                      <button className="bg-blue-500 text-white px-4 py-2 rounded">
+                        Over: {bet.over}
+                      </button>
+                      <button className="bg-red-500 text-white px-4 py-2 rounded">
+                        Under: {bet.under}
+                      </button>
+                    </div>
+                  </div>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
 
-        {/* Correct Score Bets */}
-        <AccordionItem key="correct-score" title="Correct Score Bets">
-          {scoreBets.map((bet, index) => (
-            <div key={index} className="mb-4">
-              <p className="font-bold mb-2">{bet.name}</p>
-              <div className="grid grid-cols-2 gap-4">
-                {bet.scores.map((score, i) => (
-                  <button
-                    key={i}
-                    className="bg-gray-200 text-black px-4 py-2 rounded"
-                  >
-                    {Object.keys(score)[0]}: {Object.values(score)[0]}
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
-        </AccordionItem>
-      </Accordion>
-    </>
+          {/* Card for Both Team To Score Bets */}
+          <div className="mb-6 border p-4 rounded-lg shadow-lg">
+            <h2 className="ml-4 font-bold text-xl mb-4">
+              Both Teams To Score
+            </h2>
+            <Accordion variant="splitted" allowMultiple>
+              {bothTeamToScoreBets.map((bet, index) => (
+                <AccordionItem
+                  key={index}
+                  title={<div className="text-md">{bet.name}</div>}
+                >
+                  <div className = "flex justify-between items-center">
+                  <span className="text-sm">{`${selectedGame.homeTeam} vs ${selectedGame.awayTeam}`}</span>
+                  <div className="flex justify-center space-x-4">
+                    <button className="bg-blue-500 text-white px-4 py-2 rounded">
+                      Yes: {bet.yes}
+                    </button>
+                    <button className="bg-red-500 text-white px-4 py-2 rounded">
+                      No: {bet.no}
+                    </button>
+                  </div>
+                  </div>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+
+          {/* Card for Who Wins Bets */}
+          <div className="mb-6 border p-4 rounded-lg shadow-lg">
+            <h2 className="ml-4 font-bold text-xl mb-4">
+              Who Wins
+            </h2>
+            <Accordion variant="splitted" allowMultiple>
+              {whoWinsBets.map((bet, index) => (
+                <AccordionItem
+                  key={index}
+                  title={<div className="text-md">{bet.name}</div>}
+                >
+                <div className = "flex justify-between items-center">
+                  <span className="text-sm">{`${selectedGame.homeTeam} vs ${selectedGame.awayTeam}`}</span>
+                  <div className="flex justify-center space-x-4">
+                    <button className="bg-blue-500 text-white px-4 py-2 rounded">
+                      Home: {bet.home}
+                    </button>
+                    <button className="bg-yellow-500 text-black px-4 py-2 rounded">
+                      Tie: {bet.tie}
+                    </button>
+                    <button className="bg-red-500 text-white px-4 py-2 rounded">
+                      Away: {bet.away}
+                    </button>
+                  </div>
+                  </div>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+
+          {/* Card for Correct Score Bets */}
+          <div className="mb-6 border p-4 rounded-lg shadow-lg">
+            <h2 className="ml-4 font-bold text-xl mb-4">
+              Guess the Score
+            </h2>
+            <Accordion variant="splitted" allowMultiple>
+              {scoreBets.map((bet, index) => (
+                <AccordionItem
+                  key={index}
+                  title={<div className="text-md">{bet.name}</div>}
+                >
+                  <div className="grid grid-cols-2 gap-4 justify-center">
+                    {bet.scores.map((score, i) => (
+                      <button
+                        key={i}
+                        className="bg-gray-200 text-black px-4 py-2 rounded"
+                      >
+                        {Object.keys(score)[0]}: {Object.values(score)[0]}
+                      </button>
+                    ))}
+                  </div>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
