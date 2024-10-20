@@ -23,22 +23,25 @@ export default function Layout({ children }) {
       <div>
         <GameList onGameSelect={handleGameSelect} />
       </div>
-      <div className="flex-grow p-2 md:overflow-y-auto md:p-[16px]">
-        <div>
-          {/* <h2>Selected Game:</h2>
+      <div className="flex-grow p-2 md:overflow-y-auto md:p-[16px] max-w-[700px]">
+        {/* <h2>Selected Game:</h2>
         <p>Home Team: {selectedGame?.homeTeam || "No game selected"}</p>
         <p>Away Team: {selectedGame?.awayTeam || "No game selected"}</p>
         <p>Time: {selectedGame?.time || "No time selected"}</p>
         <p>Date: {selectedGame?.date || "No date selected"}</p> */}
-          {selectedGame?.homeTeam ? (
-             <ParlayList selectedGame={selectedGame} />
-          ) : (
-            <p className="text-center font-black text-4xl mb-6">Please Select a Game</p>
-          )}
-         
-        </div>
+        {selectedGame?.homeTeam ? (
+          <ParlayList selectedGame={selectedGame} />
+        ) : (
+          <p className="text-center font-black text-4xl mb-6">
+            Please Select a Game
+          </p>
+        )}
       </div>
-      <br />
+      <div className="flex-grow p-2 md:overflow-y-auto md:p-[16px] max-w-[500px]">
+        <p className="text-center font-black text-4xl mb-6">
+          Betslip
+        </p>
+      </div>
     </div>
   );
 }
