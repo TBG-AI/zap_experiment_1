@@ -3,22 +3,18 @@ import { Card, CardBody } from "@nextui-org/react";
 import { Image } from "@nextui-org/image";
 import { useState } from "react";
 
-export function GameItem({ homeTeam, awayTeam, time }) {
-  const [selectedGame, setSelectedGame] = useState({
-    homeTeam: "",
-    awayTeam: "",
-    time: "",
-  });
+export function GameItem({ homeTeam, awayTeam, time, onGameSelect}) {
+
   const homeTeamLogo = teamLogos[homeTeam];
   const awayTeamLogo = teamLogos[awayTeam];
 
   const handlePress = () => {
-    setSelectedGame({
+    onGameSelect({
       homeTeam: homeTeam,
       awayTeam: awayTeam,
       time: time,
     });
-    console.log("Selected Game:", selectedGame);
+   
   };
 
   return (
