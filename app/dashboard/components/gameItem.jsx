@@ -1,11 +1,36 @@
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import clsx from "clsx";
+import teamLogos from "../../utils/teamLogos";
+import { Card, CardBody } from "@nextui-org/react";
+import { Image } from "@nextui-org/image";
 
 export function GameItem({ homeTeam, awayTeam, time }) {
   const homeTeamLogo = teamLogos[homeTeam];
   const awayTeamLogo = teamLogos[awayTeam];
   return (
+    <Card>
+      <CardBody className="flex">
+        <div className="flex">
+        <div className = "flex justify-between items-center">
+        <p className = "text-lg">{homeTeam}</p>
+        <Image
+          alt="Home Team Logo"
+          src={homeTeamLogo}
+          className="m-2"
+        />
+        </div>
+
+        <p className = "text-[#a6a6a6] text-sm items-center">{time}</p>
+
+       <div className = "flex justify-between items-center">
+        <Image
+          alt="Away Team Logo"
+          src={awayTeamLogo}
+          className="m-2"
+        />
+        <p className = "text-lg">{awayTeam}</p>
+        </div>
+        </div>
+      </CardBody>
+    </Card>
     // <div className="w-[417px] h-[78px] relative">
     //   <div className="w-[417px] h-[78px] left-0 top-0 absolute bg-black rounded-[10px]" />
     //   <div className="w-[388px] h-[43px] left-[22px] top-[17px] absolute">
@@ -32,8 +57,5 @@ export function GameItem({ homeTeam, awayTeam, time }) {
     //     </div>
     //   </div>
     // </div>
-    
-     
-   
   );
 }

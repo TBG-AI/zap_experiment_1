@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import {GameItem} from "./gameItem"
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
@@ -20,6 +21,7 @@ export default function GameItems() {
         console.log(link.homeTeam, link.awayTeam, link.time)
         return (
           <div>
+            <GameItem homeTeam={link.homeTeam} awayTeam={link.awayTeam} time = {link.time}/>
           </div>
           // <Link
           //   key={link.name}
