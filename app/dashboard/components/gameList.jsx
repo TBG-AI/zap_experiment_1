@@ -22,6 +22,7 @@ export default function GameList({ onGameSelect }) {
     homeTeam: "",
     awayTeam: "",
     time: "",
+    date: "",
   });
 
   // Group games by their date
@@ -53,6 +54,7 @@ export default function GameList({ onGameSelect }) {
                   homeTeam={game.homeTeam}
                   awayTeam={game.awayTeam}
                   time={game.time}
+                  date = {game.date}
                   onGameSelect={handleGameSelect}
                 />
               </div>

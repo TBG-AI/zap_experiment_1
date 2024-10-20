@@ -9,6 +9,7 @@ export default function Layout({ children }) {
     homeTeam: "",
     awayTeam: "",
     time: "",
+    date: ""
   });
 
   const handleGameSelect = (gameData) => {
@@ -28,6 +29,8 @@ export default function Layout({ children }) {
         <p>Home Team: {selectedGame?.homeTeam || "No game selected"}</p>
         <p>Away Team: {selectedGame?.awayTeam || "No game selected"}</p>
         <p>Time: {selectedGame?.time || "No time selected"}</p>
+        <p>Date: {selectedGame?.date || "No date selected"}</p>
+
       </div>
       </div>
       <br/>

@@ -3,7 +3,7 @@ import { Card, CardBody } from "@nextui-org/react";
 import { Image } from "@nextui-org/image";
 import { useState } from "react";
 
-export function GameItem({ homeTeam, awayTeam, time, onGameSelect}) {
+export function GameItem({ homeTeam, awayTeam, time, date, onGameSelect}) {
 
   const homeTeamLogo = teamLogos[homeTeam];
   const awayTeamLogo = teamLogos[awayTeam];
@@ -13,6 +13,7 @@ export function GameItem({ homeTeam, awayTeam, time, onGameSelect}) {
       homeTeam: homeTeam,
       awayTeam: awayTeam,
       time: time,
+      date: date,
     });
    
   };
