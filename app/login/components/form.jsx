@@ -1,4 +1,6 @@
-export function Form({ action, children }) {
+export function Form({ 
+  action, 
+  children }) {
   return (
     <form
       action={action}
