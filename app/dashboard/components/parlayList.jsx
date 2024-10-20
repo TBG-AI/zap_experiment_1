@@ -12,8 +12,8 @@ const overUnderBets = [
 ];
 
 const bothTeamToScoreBets = [
-  { name: "Both Team To Score", yes: -3500, no: +4000 },
-  { name: "Both Team to Score in the First Half", yes: -3500, no: +4000 },
+  { name: "Both Team To Score in the First Half", yes: -3500, no: +4000 },
+  { name: "Both Team to Score in the Second Half", yes: -3500, no: +4000 },
 ];
 
 const whoWinsBets = [
@@ -52,7 +52,28 @@ export default function ParleyList({ selectedGame, onBetsChange }) {
     setBets((prevBets) => {
       let newBets = [...prevBets];
       if (bet.name.includes('Over/Under')) {
+        if (newBets.some((existingBet) => existingBet.name.includes('Over/Under'))) {
+          alert("You cannot select more than one Over/Under bet. Replacing the previous Over/Under bet.");
+        }
         newBets = newBets.filter((existingBet) => !existingBet.name.includes('Over/Under'));
+      }
+      if (bet.name.includes('Both Team To Score')) {
+        if (newBets.some((existingBet) => existingBet.name.includes('Both Team To Score'))) {
+          alert("You cannot select both Yes and No for Both Team To Score bets. Replacing the previous bet.");
+        }
+        newBets = newBets.filter((existingBet) => !existingBet.name.includes('Both Team To Score'));
+      }
+      if (bet.name.includes('Both Team to Score in the First Half')) {
+        if (newBets.some((existingBet) => existingBet.name.includes('Both Team to Score in the First Half'))) {
+          alert("You cannot select both Yes and No for Both Team to Score in the First Half bets. Replacing the previous bet.");
+        }
+        newBets = newBets.filter((existingBet) => !existingBet.name.includes('Both Team to Score in the First Half'));
+      }
+      if (bet.name.includes('Both Team to Score in the Second Half')) {
+        if (newBets.some((existingBet) => existingBet.name.includes('Both Team to Score in the Second Half'))) {
+          alert("You cannot select both Yes and No for Both Team to Score in the Second Half bets. Replacing the previous bet.");
+        }
+        newBets = newBets.filter((existingBet) => !existingBet.name.includes('Both Team to Score in the Second Half'));
       }
       newBets.push(bet);
       if (onBetsChange) {
