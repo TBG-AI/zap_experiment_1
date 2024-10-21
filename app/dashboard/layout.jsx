@@ -3,7 +3,7 @@
 import { useState } from "react";
 import GameList from "./components/gameList";
 import ParlayList from "./components/parlayList";
-import BetSlip from "./components/betslip"
+import BetSlip from "./components/betslip";
 
 export default function Layout({ children }) {
   const [selectedGame, setSelectedGame] = useState({
@@ -21,7 +21,7 @@ export default function Layout({ children }) {
 
   return (
     <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
-        <GameList onGameSelect={handleGameSelect} />
+      <GameList onGameSelect={handleGameSelect} />
       <div className="flex-grow p-2 md:overflow-y-auto md:p-[16px] w-full">
         {/* <h2>Selected Game:</h2>
         <p>Home Team: {selectedGame?.homeTeam || "No game selected"}</p>
