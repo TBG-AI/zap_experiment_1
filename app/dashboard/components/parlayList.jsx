@@ -4,47 +4,9 @@ import { useState } from "react";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import { Button } from "@nextui-org/react";
 import BetSlip from "./betslip";
+import {overUnderBets,bothTeamToScoreBets, whoWinsBets, scoreBets} from "../../utils/dummyData";
 
-// Bet Data
-const overUnderBets = [
-  { name: "Over/Under 0.5 Goals", over: -3500, under: +4000 },
-  { name: "Over/Under 1.5 Goals", over: -3500, under: +4000 },
-  { name: "Over/Under 2.5 Goals", over: -3500, under: +4000 },
-];
 
-const bothTeamToScoreBets = [
-  { name: "Both Team To Score in the First Half", yes: -3500, no: +4000 },
-  { name: "Both Team to Score in the Second Half", yes: -3500, no: +4000 },
-];
-
-const whoWinsBets = [
-  { name: "Which Team will Win", home: -3500, tie: -3000, away: +4000 },
-];
-
-const scoreBets = [
-  {
-    name: "Final Score",
-    scores: [
-      { "0-0": +6000 },
-      { "0-1": +6000 },
-      { "1-0": +6000 },
-      { "1-1": +6000 },
-      { "2-0": +6000 },
-      { "0-2": +6000 },
-    ],
-  },
-  {
-    name: "Half-Time Score",
-    scores: [
-      { "0-0": +6000 },
-      { "0-1": +6000 },
-      { "1-0": +6000 },
-      { "1-1": +6000 },
-      { "2-0": +6000 },
-      { "0-2": +6000 },
-    ],
-  },
-];
 
 export default function ParleyList({ selectedGame, onBetsChange }) {
   const [bets, setBets] = useState([]);
@@ -57,13 +19,10 @@ export default function ParleyList({ selectedGame, onBetsChange }) {
           newBets.some((existingBet) => existingBet.name.includes("Over/Under"))
         ) {
           alert(
-            "You cannot select more than one Over/Under bet. Replacing the previous Over/Under bet."
+            "You cannot select more than one Over/Under bet!"
           );
         }
-        newBets = newBets.filter(
-          (existingBet) => !existingBet.name.includes("Over/Under")
-        );
-      }
+    }
       if (bet.name.includes("Both Team To Score")) {
         if (
           newBets.some((existingBet) =>
@@ -71,13 +30,11 @@ export default function ParleyList({ selectedGame, onBetsChange }) {
           )
         ) {
           alert(
-            "You cannot select both Yes and No for Both Team To Score bets. Replacing the previous bet."
+            "You cannot select both Yes and No for Both Team To Score bets!"
           );
         }
-        newBets = newBets.filter(
-          (existingBet) => !existingBet.name.includes("Both Team To Score")
-        );
       }
+
       if (bet.name.includes("Both Team to Score in the First Half")) {
         if (
           newBets.some((existingBet) =>
@@ -85,13 +42,9 @@ export default function ParleyList({ selectedGame, onBetsChange }) {
           )
         ) {
           alert(
-            "You cannot select both Yes and No for Both Team to Score in the First Half bets. Replacing the previous bet."
+            "You cannot select both Yes and No for Both Team to Score in the First Half bets!"
           );
         }
-        newBets = newBets.filter(
-          (existingBet) =>
-            !existingBet.name.includes("Both Team to Score in the First Half")
-        );
       }
       if (bet.name.includes("Both Team to Score in the Second Half")) {
         if (
@@ -100,13 +53,9 @@ export default function ParleyList({ selectedGame, onBetsChange }) {
           )
         ) {
           alert(
-            "You cannot select both Yes and No for Both Team to Score in the Second Half bets. Replacing the previous bet."
+            "You cannot select both Yes and No for Both Team to Score in the Second Half bets!"
           );
         }
-        newBets = newBets.filter(
-          (existingBet) =>
-            !existingBet.name.includes("Both Team to Score in the Second Half")
-        );
       }
       if (bet.name.includes("Which Team will Win")) {
         if (
@@ -115,22 +64,16 @@ export default function ParleyList({ selectedGame, onBetsChange }) {
           )
         ) {
           alert(
-            "You can only select one option from Home, Tie, or Away for Which Team will Win bets. Replacing the previous bet."
+            "You can only select one option from Home, Tie, or Away for Which Team will Win bets!"
           );
         }
-        newBets = newBets.filter(
-          (existingBet) => !existingBet.name.includes("Which Team will Win")
-        );
       }
       if (bet.name.includes("Score")) {
         if (newBets.some((existingBet) => existingBet.name.includes("Score"))) {
           alert(
-            "You can only select one option from Final Score or Half-Time Score. Replacing the previous bet."
+            "You can only select one option from Final Score or Half-Time Score!"
           );
         }
-        newBets = newBets.filter(
-          (existingBet) => !existingBet.name.includes("Score")
-        );
       }
       newBets.push(bet);
       if (onBetsChange) {
@@ -152,7 +95,7 @@ export default function ParleyList({ selectedGame, onBetsChange }) {
 
   return (
     <div className="flex">
-      <div className="flex justify-center items-center min-w-[1000px]">
+      <div className="flex justify-center items-center min-w-[880px]">
         <div className="w-[98%]">
           {/* Card for Over/Under Bets */}
           <p className="text-center font-black text-4xl mb-6">
