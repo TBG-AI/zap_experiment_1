@@ -7,12 +7,14 @@ export default function BetSlip({ bets, handleRemoveBet, tokensLeft }) {
   return (
     <div className="border p-4 rounded-lg shadow-lg ">
       <div className="flex justify-between items-center mb-2">
-      <h2 className="font-bold text-xl ">Selected Bets</h2>
-      <Card className = "bg-yellow-400" >
-        <p className="flex mx-[4px] justify-center, items-center">Tokens Left: 1000</p>
-      </Card>
+        <h2 className="font-bold text-xl ">Selected Bets</h2>
+        <Card className="bg-yellow-400">
+          <p className="flex mx-[4px] justify-center, items-center">
+            Tokens Left: 1000
+          </p>
+        </Card>
       </div>
-      
+
       {bets.length === 0 ? (
         <p>No bets selected yet.</p>
       ) : (
@@ -31,7 +33,8 @@ export default function BetSlip({ bets, handleRemoveBet, tokensLeft }) {
           ))}
         </ul>
       )}
-      <Button color="success" className="w-full">
+
+      <Button color="success" className="w-full my-[30px]">
         <p className="text-center font-black text-xl text-white">Bet Now</p>
       </Button>
     </div>
