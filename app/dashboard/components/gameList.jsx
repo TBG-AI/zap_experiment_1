@@ -43,7 +43,7 @@ export default function GameList({ onGameSelect }) {
   return (
  <div className="flex h-full flex-col px-3 py-4 md:px-2 w-[580px]">
     <div className="flex flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
-      <p className="text-center font-black text-4xl">EPL Fixtures</p>
+      <p className="text-center font-black text-4xl mb-[16px]">EPL Fixtures</p>
       <Accordion variant="splitted" fullWidth >
         {/* Render AccordionItem for each date */}
         {Object.keys(gamesByDate).map((date) => (
@@ -54,7 +54,7 @@ export default function GameList({ onGameSelect }) {
                   homeTeam={game.homeTeam}
                   awayTeam={game.awayTeam}
                   time={game.time}
-                  date = {game.date}
+                  date = {game}
                   onGameSelect={handleGameSelect}
                 />
               </div>
