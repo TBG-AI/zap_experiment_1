@@ -321,7 +321,7 @@ export default function ParleyList({ selectedGame, onBetsChange }) {
         </div>
       </div>
 
-      <div className="md:overflow-y-auto md:p-[16px] min-w-[500px]">
+      <div className="md:overflow-y-auto min-w-[500px]">
         <p className="text-center font-black text-4xl mb-6">Betslip</p>
         <BetSlip bets={bets} handleRemoveBet={handleRemoveBet} />
       </div>

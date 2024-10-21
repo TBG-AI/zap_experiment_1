@@ -21,9 +21,7 @@ export default function Layout({ children }) {
 
   return (
     <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
-      <div>
         <GameList onGameSelect={handleGameSelect} />
-      </div>
       <div className="flex-grow p-2 md:overflow-y-auto md:p-[16px] w-full">
         {/* <h2>Selected Game:</h2>
         <p>Home Team: {selectedGame?.homeTeam || "No game selected"}</p>

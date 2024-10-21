@@ -4,7 +4,7 @@ import { Button } from "@nextui-org/react";
 
 export default function BetSlip({ bets, handleRemoveBet }) {
   return (
-    <div className="border p-4 rounded-lg shadow-lg mt-10">
+    <div className="border p-4 rounded-lg shadow-lg ">
       <h2 className="font-bold text-xl mb-4">Selected Bets</h2>
       {bets.length === 0 ? (
         <p>No bets selected yet.</p>
