@@ -75,6 +75,18 @@ export default function ParleyList({ selectedGame, onBetsChange }) {
         }
         newBets = newBets.filter((existingBet) => !existingBet.name.includes('Both Team to Score in the Second Half'));
       }
+      if (bet.name.includes('Which Team will Win')) {
+        if (newBets.some((existingBet) => existingBet.name.includes('Which Team will Win'))) {
+          alert("You can only select one option from Home, Tie, or Away for Which Team will Win bets. Replacing the previous bet.");
+        }
+        newBets = newBets.filter((existingBet) => !existingBet.name.includes('Which Team will Win'));
+      }
+      if (bet.name.includes('Score')) {
+        if (newBets.some((existingBet) => existingBet.name.includes('Score'))) {
+          alert("You can only select one option from Final Score or Half-Time Score. Replacing the previous bet.");
+        }
+        newBets = newBets.filter((existingBet) => !existingBet.name.includes('Score'));
+      }
       newBets.push(bet);
       if (onBetsChange) {
         onBetsChange(newBets);
